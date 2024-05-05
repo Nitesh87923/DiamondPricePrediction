@@ -1,4 +1,6 @@
 flask
 numpy
 pandas
-#-e .
+numpy
+scikit-learn==1.3.2
+-e .

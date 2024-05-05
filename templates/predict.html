@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anta&family=Zeyada&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    .img{
+      height: 10em;
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      border-radius: 5%;
+    }
+    #input
+    {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      width: 11.5rem;
+    }
+    .form-group
+    {
+         margin: 10%;
+    }
+    .heading{
+      color: white;
+      font-family:monospace;
+    }
+    
+    ::-webkit-input-placeholder{
+      font-family: monospace;
+      font-size: 13px;
+    
+    }
+    #tag
+    {
+   
+  font-family: "Anta",sans-serif ;
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
+  color: azure;
+    }
+    body{
+      background-image: url("/static/diamond_banner_2.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100%;
+      background-color:black;
+    }
+    #calc
+    {
+        margin: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="tag">"Predicting the sparkle in every diamond"</div>
+  <form action="{{url_for('predict_datapoint')}}" method="POST">
+  
+    <div class="form-group" id="1">
+      <img id="carat_img" src="/static/carat.jpg" class="img"> 
+        <label for="carat" class="heading" id="carat">Carat:</label>
+        <input type="text" id="input" name="carat" placeholder="Enter carat value (float)">
+    </div>
+
+    <div class="form-group" id="2">
+      <img id="carat_img" src="/static/depth.jpeg" class="img">
+        <label for="depth" class="heading">Depth:</label>
+        <input type="number" id="input" name="depth" placeholder="Enter depth value (int)">
+    </div>
+
+    <div class="form-group" id="3">  
+      <img id="carat_img" src="/static/table.jpg" class="img">
+        <label for="table" class="heading">Table:</label>
+        <input type="text" id="input" name="table" placeholder="Enter table value (float)">
+    </div>
+  </ul>
+    <div class="form-group" id="4">
+      <img id="carat_img" src="/static/axis.png" class="img">
+        <label for="x" class="heading">x:</label>
+        <input type="text" id="input" name="x" placeholder="Enter x value (float)">
+    </div>
+      
+    <div class="form-group" id="5">
+        <label for="y" class="heading">y:</label>
+        <input type="text" id="input" name="y" placeholder="Enter y value (float)">
+    </div>
+  
+    <div class="form-group" id="6">
+        <label for="z" class="heading">z:</label>
+        <input type="text" id="input" name="z" placeholder="Enter z value (float)">
+    </div>           
+<div class="form-group" id="7">
+  <img id="carat_img" src="/static/cut.jpg" class="img">
+  <label for="cut" class="heading">Cut:</label>
+  <select id="input" name="cut">
+    <option value="Fair">Fair</option>
+    <option value="Good">Good</option>
+    <option value="Very Good">Very Good</option>
+    <option value="Premium">Premium</option>
+    <option value="Ideal">Ideal</option>
+  </select>
+</div>
+  
+<div class="form-group" id="8">
+  <img id="carat_img" src="/static/color.jpg" class="img">
+  <label for="color" class="heading">Color:</label>
+  <select id="input" name="color">
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+    <option value="J">J</option>
+  </select>
+</div>
+
+<div class="form-group" id="9">
+  <img id="carat_img" src="/static/clarity.png" class="img">
+  <label for="clarity" class="heading">Clarity:</label>
+  <select id="input" name="clarity">
+    <option value="I1">I1</option>
+    <option value="SI2">SI2</option>
+    <option value="SI1">SI1</option>
+    <option value="VS2">VS2</option>
+    <option value="VS1">VS1</option>
+    <option value="VVS2">VVS2</option>
+    <option value="VVS1">VVS1</option>
+    <option value="IF">IF</option>
+  </select>
+</div>
+
+<div style="clear:both;"></div>
+<!--
+<center>
+  <button id="sub" type="submit" class="btn btn-primary" margin-bottom="10px">Submit</button>
+</center>
+-->  
+
+</form>
+<center>
+  
+  <button id="sub" class="btn btn-primary" margin-bottom="10px" onclick=display()>Submit</button>
+</center>
+<center>
+<button id="calc" class="btn btn-warning">??????</button>
+</center>
+</body>
+<script>
+   function display()
+   {
+    //alert("The Predicted Price is {{final_result}}");
+    
+    var ele=document.getElementById("calc");
+    var disp="The Predicted Price is ${{final_result}}";
+    
+    ele.innerHTML=disp;
+    
+    
+   }
+</script>
+</html>

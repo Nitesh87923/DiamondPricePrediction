@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="style.css" rel="stylesheet">
+        <style>
+           #head_div{
+               background-color: black;
+           }
+           #dpp_div{
+                align-items: center;
+                /*text-align: center;*/
+                margin-top: 3px;
+                color: whitesmoke;
+                margin-left: 3%;
+
+           }
+           #imag{
+               height: 30px;
+               width: 30px;
+               
+               object-fit: cover;
+               border-radius: 100%;
+               animation: contrastAnimation 1s infinite alternate; 
+               }
+            #predict{
+               position: relative;
+            }   
+            @keyframes contrastAnimation {
+           from {
+            height:30px;
+            
+           }
+           to
+           {
+            height: 33px;;
+            
+           }
+           } 
+           button{
+            position:absolute;
+            left:0%;
+            transform:translateX(-50%);
+            transform:translateY(50%);
+            margin: 20% 70% 50% 44%;
+            height: 50px;
+            width: 100px;
+            position:fixed;
+            border-color: yellow;
+            border-radius: 15%;
+            border-collapse: collapse;
+            background-color: yellow;
+            box-shadow: 0 0 3px yellow,
+            0 0 25px yellow;
+            
+           }
+           button:hover{
+              box-shadow: 0 0 5px yellow,
+              0 0 15px yellow,
+              0 0 20px yellow,
+              0 0 50px yellow;
+           } 
+           body{
+      background-image: url("image/images/diamond_banner_2.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100%;
+      background-color:black;
+    }
+
+
+
+        </style>
+</head>
+
+<body>
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div id="dpp_div">
+        
+       <img id="imag" src="/static/diamond_2.jpg"> 
+       <span id="dpp_id"><b>Diamond Price Predictor</b></span>
+       <img id="imag" src="/static/diamond_2.jpg">
+    
+       
+    </div>
+          
+    </nav>
+    <div id="predict"><button onclick="predict()"><b><a href="/predict">Predict<a></b></button></div>
+
+     <script>
+        function predict()
+        {
+           window.location.href="\C:\Users\DELL\Desktop\USE ME\Diamond_Price_Prediction\templates\predict.html";
+        }
+     </script>   
+
+   
+
+      
+   
+    </body>
+</html>
